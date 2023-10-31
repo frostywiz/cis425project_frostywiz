@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+        <title>Products</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <div id="wrapper">
+            <header>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <h1>Our Products</h1>
+                <aside id="side-menu">
+                    <p>Enter a keyword or just click Search Products button to search products.</p>
+                    <input type="text" id="searchInput" placeholder="Enter a keyword">
+                    <button id="searchButton">Search Products</button>
+                    <p id="totalPriceDisplayed"></p>
+                    <button id="addToCartButton">Add to Cart</button>
+                </aside>
+                <div id="products-table-container">
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th width="200px">Prodcut Name</th>
+                                <th width="50px">Price</th>
+                                <th width="70px">Quantity</th>
+                                <th wdith="100px">Item Total Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Product data will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+            <footer>
+                <!-- Add copyright and contact information here -->
+            </footer>
+        </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchButton = document.querySelector('#searchButton');
+            const searchInput = document.querySelector('#searchInput');
+            const productsTable = document.querySelector('#products-table-container table tbody');
+            const totalPriceDisplayed = document.createElement('p');
+            const taxRate = 0.10;
+
+            let totalPrice = 0;
+
+            // Fetch and display all prodcuts when the page is first loaded
+            fetchProducts();
+
+            // Function to fetch and display products based on the search query
+            function fetchProducts()
+            {
+                fetch('/products')
+                    .then(response => response.json())
+                    .then(data => {
+                        productsTable.innerHTML = ''; //Clear existing table rows
+
+                        data.forEach(product => {
+                            const row = productsTable.insertRow();
+                            const nameCell = row.insertCell(0);
+                            const priceCell = row.insertCell(1);
+                            const quantityCell = row.insertCell(2);
+                            const itemPriceCell = row.insertCell(3);
+
+                            nameCell.textContent = product.prod_name;
+                            priceCell.textContent = '$${product.prod_price.toFixed(2)}';
+
+                            // Create an input element for quantity
+                            const quantityInput = document.createElement('input');
+                            quantityInput.type = 'number';
+                            quantityInput.min = 0;
+                            quantityInput.max = 20;
+                            quantityInput.value = 1;
+                            quantityInput.style.width = '50px';
+                            quantityInput.id = 'quantity';
+                            quantityInput.name = 'quantity';
+                            quantityCell.appendChild(quantityInput);
+
+                            // Calculate the initial subtotal
+                            calculateSubtotal(product, quantityInput, priceCell, itemPriceCell);
+
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error fetching product data: ', error);
+                    });
+            }
+
+        });
+    </script>
+    </body>
+</html>

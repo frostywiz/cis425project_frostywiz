@@ -1,0 +1,35 @@
+#signupForm {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 50em;
+    width: 80%;
+    display: grid;
+    gap: 1em;
+    grid-template-columns: 12em 1fr;
+}
+
+#side-menu {
+    background-color: mediumpurple;
+    color: white;
+    text-align: left;
+    padding: 10px 20px;
+    width: 200px;
+    float: right;
+}
+
+#side-menu button {
+    background-color: #7f48c3;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#side-menu button:hover {
+    background-color: blueviolet;
+}
+
+p {
+    margin-bottom: 5px;
+}
