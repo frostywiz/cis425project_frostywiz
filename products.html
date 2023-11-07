@@ -140,6 +140,19 @@
             }
 
         });
+        
+        // Event listener tfor Add to Cart button
+        const addToCartButton = document.querySelector('#addToCartButton');
+        addToCartButton.addEventListener('click', () => {
+            //Get the selected items
+            const selectItems = getSelectedItems();
+
+            // Store the selected items in local storage
+            localStorage.setItem('cartItems', JSON.stringify(selectItems));
+
+            // Redirect to cart.html
+            window.location.href = 'cart.html';
+        })
     </script>
     </body>
 </html>
