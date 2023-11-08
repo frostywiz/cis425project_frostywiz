@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Cart</title>
-        <link rel="">
+        <link rel="icon" type="image/png" href="Logo.png">
     </head>
         <body>
         <div align="center">
@@ -15,22 +15,23 @@
             <!-- Last Name -->
             <label for="lname">Last Name*:</label>
             <input type="text" name="lname" id="lname" required>
-            <!-- Radio Button -->
+            <!-- Email Input -->
             <label for="email">Email*:</label>
             <input type="text" name="email" id="email" required>
-            <!-- Select drop-down list -->
+            <!-- City/Town input -->
             <label for="city">City/Town:</label>
-            <input type="text" name="city" id="city">
-            <!-- checkboxes-->
-            <label for="transportation">Check the transportation you own:</label>
-            <div class="form-container">
-              <input type="checkbox" name="vehicle1" value="bike">I have a bike
-              <input type="checkbox" name="vehicle2" value="car">I have a car
-              <input type="checkbox" name="vehicle3" value="boat">I have a boat
-            </div>
-            <!-- Message/comment -->
-            <label for="message">Message/comments: </label>
-            <textarea rows="5" cols="20">Comments</textarea>
+            <input type="text" name="city" id="city" required>
+            <!-- Phone # input-->
+            <label for="phone">Phone Number:</label>
+            <input type="text" name="phone" id="phone">
+            <!-- Drop down for payment type -->
+            <label for="payment">Payment Method: </label>
+            <select name="payment">
+                <option value="Visa">Visa</option>
+                <option value="Discover">Discover</option>
+                <option value="Master Card">Master Card</option>
+                <option value="Digital Wallet">Google/Apple Pay</option>
+            </select>
       
             <!-- buttons in the same row-->
             <div class="button-container">
@@ -38,7 +39,6 @@
               <input type="reset" value="Cancel">
               <!-- <button type="reset">Cancel</button> -->
             </div>
-      
           </form>
         </body>
 </html>
