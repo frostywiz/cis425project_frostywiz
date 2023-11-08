@@ -4,39 +4,61 @@
         <meta charset="utf-8">
         <title>Taco Bell Home</title>
         <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="icon" type="image/png" href="Logo.png">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
 
-    <body>
-        <div id="wrapper">
-            <header align='center'>
+    <body id="body-home">
+        
+            <header>
+            <div id="logo">
+                <img src="Logo.png" width="100" height="100" alt="Logo">
+            </div>
+            <div id="navhero"></div>
                 <h1>Taco Bell</h1>
+            </div>
             </header>
-            <nav align="center">
-                <div class="menu-icon" id="menu-icon">
-                    <i class = "fa fa-bars"></i>
-                </div>
+        
+            <nav id="menu">
                 <ul class="nav-menu" id="menu-icon">
-                    <li><a href=index.html target=_blank>Home</a> &nbsp; &nbsp; </li>
-                    <li><a href=products.html target=_blank>Products</a>&nbsp; &nbsp; </li>
-                    <li><a href=contact.html target=_blank>Contact</a>&nbsp; &nbsp; </li>
+                    <li><strong><a href=index.html target=_blank>Home</a></strong>&nbsp; &nbsp; </li>
+                    <li><strong><a href=products.html target=_blank>Products</a></strong>&nbsp; &nbsp; </li>
+                    <li><strong><a href=contact.html target=_blank>Contact</a></strong>&nbsp; &nbsp; </li>
                 </ul>
             </nav>
+        <hr>
+
+        <div id="description">
+            <h2>Mission Statement</h2>
+            <p>Taco Bell is an American fast-food restaurant chain known for its Tex-Mex cuisine, which combines traditional Mexican dishes with American flavors and fast-food convenience. Founded in 1962 by Glen Bell, Taco Bell has grown to become one of the largest and most popular fast-food chains in the world.
+            </p>
+            <p>Taco Bell is recognized for its affordable, quick, and tasty Mexican-inspired fast food, appealing to a wide range of customers, including young adults and families.
+            </p>
         </div>
+
+        <h2>Our History</h2>
+        <div id="body-video">
+            <iframe width="640" height="360" src="https://www.youtube.com/embed/vAsHUc3G2a4" 
+            title="The Surprising History of Taco Bell" frameborder="0" allow="accelerometer; 
+            autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; 
+            web-share" allowfullscreen></iframe>  
+        </div>
+
+        
+        
     </body>
 
     <footer align='center'>
+        <div class="socialMediaLinks">
+            <p></p>
+            <i><a href="https://twitter.com/tacobell" class="fa fa-twitter" target="_blank"></a>
+              <a href="https://www.facebook.com/tacobell" class="fa fa-facebook-f" target="_blank"></a>
+              <a href="https://www.instagram.com/tacobell" class="fa fa-instagram" target="_blank"></a>
+              <a href="https://www.linkedin.com/company/taco-bell/" class="fa fa-linkedin" target="_blank">
+              </a></i>
+          </div>
         <p><i><small>Caleb Frost & Sean Carver 2023 &copy; <br>
               <a href="mailto:ctfrost@asu.edu" style="color:white;">ctfrost@asu.edu</a></small></i></p>
-        <div class="socialMediaLinks">
-          <!-- Replace the website links with links to your profiles -->
-          <p></p>
-          <i><a href="https://twitter.com" class="fa fa-twitter" target="_blank"></a>
-            <a href="https://www.facebook.com/caleb.frost.1023" class="fa fa-facebook-f" target="_blank"></a>
-            <a href="https://github.io/frostywiz" class="fa fa-brand fa-github" target="_blank"></a>
-            <a href="https://www.instagram.com/caleb.frosty/" class="fa fa-instagram" target="_blank"></a>
-            <a href="https://www.linkedin.com/in/caleb-frost-571009233/" class="fa fa-linkedin" target="_blank">
-            </a></i>
-        </div>
-    
       </footer>
 </html>
