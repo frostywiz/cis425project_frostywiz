@@ -4,23 +4,26 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width-device-width, initial-scale=1.0">
         <title>Products</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="products.css">
         <link rel="icon" type="image/png" href="Logo.png">
     </head>
-    <body>
+    <body id="body-products">
         <div id="wrapper">
             <header>
-                <nav>
+                <h1>Our Products</h1>
+            </header>
+
+            <main>
+                
+                <nav id="nav-products">
                     <ul id="menu-products">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="products.html">Products</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </nav>
-            </header>
-
-            <main>
-                <h1>Our Products</h1>
+                <hr>
+                <br><br>
                 <aside id="side-menu">
                     <p>Enter a keyword or just click Search Products button to search products.</p>
                     <input type="text" id="searchInput" placeholder="Enter a keyword">
@@ -36,6 +39,12 @@
                                 <th width="50px">Price</th>
                                 <th width="70px">Quantity</th>
                                 <th wdith="100px">Item Total Price</th>
+                            </tr>
+                            <tr>
+                                <td>Hard Taco</td>
+                                <td class="price">1.79</td>
+                                <td><input type="number" class="quantity-input" value="0" min="0"></td>
+                                <td class="item-total-price">1.79</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -142,7 +151,7 @@
 
         });
 
-        // Event listener tfor Add to Cart button
+        // Event listener for Add to Cart button
         const addToCartButton = document.querySelector('#addToCartButton');
         addToCartButton.addEventListener('click', () => {
             //Get the selected items
