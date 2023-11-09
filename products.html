@@ -3,13 +3,16 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width-device-width, initial-scale=1.0">
-        <title>Products</title>
+        <title>Taco Bell: Our Products</title>
         <link rel="stylesheet" type="text/css" href="products.css">
         <link rel="icon" type="image/png" href="Logo.png">
     </head>
     <body id="body-products">
         <div id="wrapper">
             <header>
+                <div id="logo">
+                    <img src="Logo.png" width="100" height="100" alt="Logo">
+                </div>
                 <h1>Our Products</h1>
             </header>
 
@@ -35,17 +38,30 @@
                     <table border="1">
                         <thead>
                             <tr>
-                                <th width="200px">Prodcut Name</th>
+                                <th width="400px">Prodcut Name</th>
                                 <th width="50px">Price</th>
                                 <th width="70px">Quantity</th>
-                                <th wdith="100px">Item Total Price</th>
+                                <th width="100px">Item Total Price</th>
                             </tr>
                             <tr>
-                                <td>Hard Taco</td>
+                                <td><img src="crunchy_taco.png" alt="taco" width="50" height="50">
+                                    Hard Taco</td>
                                 <td class="price">1.79</td>
                                 <td><input type="number" class="quantity-input" value="0" min="0"></td>
                                 <td class="item-total-price">1.79</td>
                             </tr>
+                            <tr>
+                                <td><img src="bean_burrito.png" alt="burrito" width="50" height="50">Bean Burrito</td>
+                                <td class="price">1.79</td>
+                                <td><input type="number" class="quantity-input" value="0" min="0"></td>
+                                <td class="item-total-price">1.79</td>
+                              </tr>
+                              <tr>
+                                  <td><img src="quesadilla.png" alt="chick_quesadilla" width="50" height="50">Chicken Quesadilla</td>
+                                  <td class="price">4.99</td>
+                                  <td><input type="number" class="quantity-input" value="0" min="0"></td>
+                                  <td class="item-total-price">4.99</td>
+                              </tr>
                         </thead>
                         <tbody>
                             <!-- Product data will be inserted here -->
