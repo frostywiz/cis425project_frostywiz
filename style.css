@@ -1,265 +1,165 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width-device-width, initial-scale=1.0">
-        <title>Products</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <link rel="icon" type="image/png" href="Logo.png">
-    </head>
-    <body>
-        <div id="wrapper">
-            <header>
-                <nav>
-                    <ul id="menu-products">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="products.html">Products</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </nav>
-            </header>
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+/* Beginning of index.html css */
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 
-            <main>
-                <h1>Our Products</h1>
-                <aside id="side-menu">
-                    <p>Enter a keyword or just click Search Products button to search products.</p>
-                    <input type="text" id="searchInput" placeholder="Enter a keyword">
-                    <button id="searchButton">Search Products</button>
-                    <p id="totalPriceDisplayed"></p>
-                    <button id="addToCartButton">Add to Cart</button>
-                </aside>
-                <div id="products-table-container">
-                    <table border="1">
-                        <thead>
-                            <tr>
-                                <th width="200px">Prodcut Name</th>
-                                <th width="50px">Price</th>
-                                <th width="70px">Quantity</th>
-                                <th wdith="100px">Item Total Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Product data will be inserted here -->
-                        </tbody>
-                    </table>
-                </div>
-            </main>
-            <footer>
-                <!-- Add copyright and contact information here -->
-            </footer>
-        </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const searchButton = document.querySelector('#searchButton');
-            const searchInput = document.querySelector('#searchInput');
-            const productsTable = document.querySelector('#products-table-container table tbody');
-            const totalPriceDisplayed = document.createElement('p');
-            const taxRate = 0.10;
+h1 {
+    text-align: center;
+    font-size: 100px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: black;
+}
 
-            let totalPrice = 0;
+body {
+    margin: 0;
+    padding: 0;
+}
 
-            // Fetch and display all prodcuts when the page is first loaded
-            fetchProducts();
+#logo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+    margin-left: 10px;
+    margin-top: 40px;
+} 
 
-            // Function to fetch and display products based on the search query
-            function fetchProducts()
-            {
-                fetch('/products')
-                    .then(response => response.json())
-                    .then(data => {
-                        productsTable.innerHTML = ''; //Clear existing table rows
+header {
+    background-image: url(Background\ image.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 200px;
+    text-align: center; /* Center the text within the header */
+    color: white; /* Set text color to contrast the background image */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Add text outline */
+    text-shadow: 
+        -1px -1px 0 white,  
+         1px -1px 0 white,
+        -1px  1px 0 white,
+         1px  1px 0 white; 
+}
 
-                        data.forEach(product => {
-                            const row = productsTable.insertRow();
-                            const nameCell = row.insertCell(0);
-                            const priceCell = row.insertCell(1);
-                            const quantityCell = row.insertCell(2);
-                            const itemPriceCell = row.insertCell(3);
+h2 {
+    text-align: left;
+    font-size: 50px;
+    margin-left: 50px;
+    margin-bottom: 0;
+    padding: 0;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: black;
+    text-shadow: 
+        -1px -1px 0 white,  
+         1px -1px 0 white,
+        -1px  1px 0 white,
+         1px  1px 0 white; 
+}
 
-                            nameCell.textContent = product.prod_name;
-                            priceCell.textContent = `$${product.prod_price.toFixed(2)}`;
+#description p {
+    text-align: left;
+    margin-left: 50px;
+    margin-top: 5px;
+    padding: 5px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: black;
+}
 
-                            // Create an input element for quantity
-                            const quantityInput = document.createElement('input');
-                            quantityInput.type = 'number';
-                            quantityInput.min = 0;
-                            quantityInput.max = 20;
-                            quantityInput.value = 1;
-                            quantityInput.style.width = '50px';
-                            quantityInput.id = 'quantity';
-                            quantityInput.name = 'quantity';
-                            quantityCell.appendChild(quantityInput);
+#navhero {
+    width: fit-content;
+    height: fit-content;
+}
 
-                            // Calculate the initial subtotal
-                            calculateSubtotal(product, quantityInput, priceCell, itemPriceCell);
+#wrapper {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    grid-template-areas:
+    "header header"
+    "nav hero"
+    "nav main"
+    "nav footer";
+}
 
-                        });
-                    })
-                    .catch(error => {
-                        console.error('Error fetching product data: ', error);
-                    });
-            }
+#menu-icon {
+    text-decoration: none;
+    justify-content: center;
+}
 
-            // 10/31/23
-            // Function to calculate teh subtotal and item total for a product
-            function calculateSubtotal(product, quantityInput, priceCell, itemPriceCell)
-            {
-                const quantity = parseInt(quantityInput.value,10);
-                const price = product.prod_price;
-                
-                // Calculate the subtotal
-                const subtotal = quantity * price;
-                priceCell.textContent = `$${price.toFixed(2)}`;
-                itemPriceCell.textContent = `$${subtotal.toFixed(2)}`;
-                
-                // Check of quantity is not 0
-                // if (!is Number(quantity));
-            }
+nav {
+    text-align: center;
+    text-shadow: 
+        -1px -1px 0 black,  
+         1px -1px 0 black,
+        -1px  1px 0 black,
+         1px  1px 0 black; 
+}
 
-            // FUnction to calcualte the total price ncluding tax
-            function calculateTotal()
-            {
-                totalPrice = 0;
-                const totalCells = document.querySelectorAll('#products-table-container table tboy tr td:nth-child(4)'); //This will get 4th column's value
-                const priceCells = document.querySelectorAll('#products-table-container table tbody tr td:nth-child(2)'); //2nd column's value
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
 
-                priceCells.forEach((priceCell, index) => {
-                    const price = parseFloat(priceCell.textContent.replace('$', ''));
-                    const quantityInput = document.querySelectorAll('input[type="number"]')[index];
-                    const quantity = parseInt(quantityInput.value, 10);
-                    const itemTotalCell = itemTotalCells[index];
-                    const itemTotal = quantity * price;
+nav li:hover {
+    background-color: rgba(255, 251, 7, 0.767);
+    color:#5a3085;
+    text-align: center;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    line-height: 40px;
+    margin: 5px;
+}
 
-                    totalPrice += itemTotal
+nav ul li {
+    display: inline;
+    justify-content: center;
+}
 
-                    itemTotalCell.textContent = `$${itemTotal.toFixed(2)}`;
+nav li a {
+    display: inline-block;
+    color: #7f48c3;
+    text-align: center;
+    padding: 14px 14px;
+    text-decoration: none;
+    justify-content: center;
+    font-size: 30px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
 
-                    const totalWithTax = totalPrice + (totalPrice * taxRate);
-                    totalPriceDisplayed.textContent = `Total Price with 10% tax: $${totalwithTax.toFixed(2)}`;
-                }
-        )}
+#body-video {
+    justify-content: center;
+    display: flex;
+}
 
-        });
+#body-home { 
+    background-color: #7f48c3;
+    background-image: linear-gradient(to bottom, #9776b9, #2f0a55);
+    background-repeat: no-repeat; 
+}
 
-        // Event listener tfor Add to Cart button
-        const addToCartButton = document.querySelector('#addToCartButton');
-        addToCartButton.addEventListener('click', () => {
-            //Get the selected items
-            const selectItems = getSelectedItems();
+p {
+    margin-bottom: 5px;
+}
 
-            // Store the selected items in local storage
-            localStorage.setItem('cartItems', JSON.stringify(selectItems));
+footer {
+    background-color: #2f0a55;
+    text-align: center;
+    justify-content: center;
+    color: white;
+    padding-bottom: 5px;
+    margin-bottom: 0;
+}
 
-            // Redirect to cart.html
-            window.location.href = 'cart.html';
-        });
-
-        // Perform search when teh "Search Products" button is clicked
-        searchInput.addEventListener('click', () => {
-            performSearch();
-        });
-
-        // Perform serach when Enter Key is pressed in the search input
-        searchInput.addEventListener('keyup', (event) => {
-            if (event.key == 'Enter') {
-                performSearch()
-            }
-        });
-
-        // Event listener to recalculate prices when quantity changes
-        productsTable.addEventListener('input', (event) => {
-            if (event.target && event.target.type === 'number')
-            {
-                calculateSubtotalForChangedInput(event.target);
-            }
-        });
-
-        // Function to calculate subtotal when quantity input changes
-        function calculateSubtotalForChangedInput(quantityInput) {
-            const row = quantityInput.closest('tr');
-            const priceCell = row.querySelector('td:nth-child(2)');
-            const itemPriceCell = row.querySelector('td:nth-child(4)');
-            const productPrice = parseFloat(priceCell.textContent.replace('$', ''));
-            const quantity = parseInt(quantityInput.value, 10);
-
-            calculateSubtotal({prod_price: productPrice}, quantityInput, priceCell, itemPriceCell);
-
-        }
-
-        // Function to fetch and display products based on search query
-        function performSearch()
-        {
-            const searchQuery = searchInput.value.trim();
-            if (searchQuery === '') {
-                fetchProducts();
-            }
-            else {
-                // Fetch products based on teh search words
-                fetch('/products?searchQuery=$(encondeURIComponent(searchQuery))')
-                .then(response => response.json())
-                .then(data => {
-                    productsTable.innerHTML = ''; // Clear the existing 
-
-                    data.forEach(product => {
-                        const row = productsTable.insertRow();
-                        const nameCell = row.insertCell(0);
-                        const priceCell = row.insertCell(1);
-                        const quantityCell = row.insertCell(2);
-                        const itemPriceCell = row.insertCell(3);
-
-                        nameCell.textContent = product.prod_name;
-                        priceCell.textContent = `$${product.prod_price.toFixed(2)}`;
-
-                        // Create an input element for quantity
-                        const quantityInput = document.createElement('input');
-                        quantityInput.type = 'number';
-                        quantityInput.min = 0;
-                        quantityInput.max = 20;
-                        quantityInput.value = 1;
-                        quantityInput.style.width = '50px';
-                        quantityInput.id = 'quantity';
-                        quantityInput.name = 'quantity';
-                        quantityCell.appendChild(quantityInput);
-
-                        // Calculate the initial subtotal
-                        calculateSubtotal(product, quantityInput, priceCell, itemPriceCell);
-
-                        });
-
-                    })
-                    .catch(error => {
-                        console.error('Error fetching product data: ', error);
-                    })
-                }
-            };
-
-            // Function to get selected items from the product table
-            function getSelectedItems() 
-            {
-                const rows = document.querySelectorAll('#products-table-container table tbody tr');
-                const selectedItems = [];
-
-                rows.forEach(row => {
-                    const quantityInput = row.querySelector('input[type="number"]');
-                    const productName = row.querySelector('td:nth-child(1)').textContent;
-                    const productPrice = parseFloat(row.querySelector('td:nth-child(2)').textContent.replace('$', ''));
-                    const quantity = parseInt(quantityInput.value, 10);
-
-                    if (quantity > 0)
-                    {
-                        selectedItems.push({
-                            name: productName,
-                            price: productPrice,
-                            quantity: quantity,
-                        });
-                    }
-                });
-
-                return selectedItems
-            }
-
-        
-    </script>
-    </body>
-</html>
+.socialMediaLinks a {
+    font-size: 20px;
+    margin: 5px 10px 0px 10px;
+    text-decoration: none;
+    background-color: #7f48c3;
+    padding: 10px;
+    width: 20px;
+    text-align: center;
+    border-radius: 25%;
+}
