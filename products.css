@@ -1,0 +1,174 @@
+h1 {
+    text-align: center;
+    font-size: 100px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: black;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#logo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+    margin-left: 10px;
+    margin-top: 40px;
+} 
+
+header {
+    background-image: url(Background\ image.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 200px;
+    text-align: center; /* Center the text within the header */
+    color: white; /* Set text color to contrast the background image */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Add text outline */
+    text-shadow: 
+        -1px -1px 0 white,  
+         1px -1px 0 white,
+        -1px  1px 0 white,
+         1px  1px 0 white; 
+}
+
+h2 {
+    text-align: left;
+    font-size: 50px;
+    margin-left: 50px;
+    margin-bottom: 0;
+    padding: 0;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: black;
+    text-shadow: 
+        -1px -1px 0 white,  
+         1px -1px 0 white,
+        -1px  1px 0 white,
+         1px  1px 0 white; 
+}
+
+nav {
+    text-align: center;
+    text-shadow: 
+        -1px -1px 0 black,  
+         1px -1px 0 black,
+        -1px  1px 0 black,
+         1px  1px 0 black; 
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li:hover {
+    background-color: rgba(255, 251, 7, 0.767);
+    color:#5a3085;
+    text-align: center;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    line-height: 40px;
+    margin: 5px;
+}
+
+nav ul li {
+    display: inline;
+    justify-content: center;
+}
+
+nav li a {
+    display: inline-block;
+    color: #7f48c3;
+    text-align: center;
+    padding: 14px 14px;
+    text-decoration: none;
+    justify-content: center;
+    font-size: 30px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#body-products {
+    background-color: #7f48c3;
+    background-image: linear-gradient(to bottom, #9776b9, #2f0a55);
+    background-repeat: no-repeat; 
+}
+
+#menu-products li {
+    display: inline-block;
+    color: #7f48c3;
+    text-align: center;
+    padding: 14px 14px;
+    text-decoration: none;
+    justify-content: center;
+    font-size: 30px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  }
+  
+  #menu-products li a {
+    padding: 2px 2px;
+  }
+
+tr, input{
+    background-color: mediumpurple;
+}
+
+table{
+    align-items: left;
+    text-decoration: none;
+    display: flex;
+    flex-direction: left;
+}
+
+#menu-products {
+    text-decoration: none;
+    justify-content: center;
+    padding: 0;
+    display: flex;
+}
+
+#signupForm {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 50em;
+    width: 80%;
+    display: grid;
+    gap: 1em;
+    grid-template-columns: 12em 1fr;
+}
+
+#side-menu {
+    background-color: mediumpurple;
+    color: white;
+    text-align: left;
+    padding: 10px 20px;
+    margin-right: 10px;
+    width: 200px;
+    float: right;
+}
+
+#side-menu input {
+    color: black;
+    text-decoration-color: black;
+}
+
+#side-menu button {
+    background-color: #7f48c3;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#side-menu button:hover {
+    background-color: blueviolet;
+}
+
