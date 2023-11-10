@@ -126,7 +126,7 @@ h2 {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   }
   
-  #menu-products li a {
+#menu-products li a {
     padding: 2px 2px;
   }
 
@@ -189,3 +189,14 @@ td img {
     background-color: blueviolet;
 }
 
+/* 11/9/23 in class shopping cart css */
+#cart-icon-container {
+    float: right;
+    margin-right: 5px;
+}
+
+.fa-shopping-cart {
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+}
