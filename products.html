@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width-device-width, initial-scale=1.0">
         <title>Taco Bell: Our Products</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="products.css">
         <link rel="icon" type="image/png" href="Logo.png">
     </head>
@@ -18,11 +19,15 @@
 
             <main>
                 
+                
                 <nav id="nav-products">
                     <ul id="menu-products">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="products.html">Products</a></li>
                         <li><a href="contact.html">Contact</a></li>
+                        <div id="cart-icon-container">
+                            <a href="cart.html"><i class="fa fa-shopping-cart"></i></a>
+                        </div>
                     </ul>
                 </nav>
                 <hr>
@@ -44,20 +49,20 @@
                                 <th width="100px">Item Total Price</th>
                             </tr>
                             <tr>
-                                <td><img src="crunchy_taco.png" alt="taco" width="50" height="50">
+                                <td><img src="crunchy_taco.png" alt="taco" width="200" height="150">
                                     Hard Taco</td>
                                 <td class="price">1.79</td>
                                 <td><input type="number" class="quantity-input" value="0" min="0"></td>
                                 <td class="item-total-price">1.79</td>
                             </tr>
                             <tr>
-                                <td><img src="bean_burrito.png" alt="burrito" width="50" height="50">Bean Burrito</td>
+                                <td><img src="bean_burrito.png" alt="burrito" width="200" height="150">Bean Burrito</td>
                                 <td class="price">1.79</td>
                                 <td><input type="number" class="quantity-input" value="0" min="0"></td>
                                 <td class="item-total-price">1.79</td>
                               </tr>
                               <tr>
-                                  <td><img src="quesadilla.png" alt="chick_quesadilla" width="50" height="50">Chicken Quesadilla</td>
+                                  <td><img src="quesadilla.png" alt="chick_quesadilla" width="200" height="150">Chicken Quesadilla</td>
                                   <td class="price">4.99</td>
                                   <td><input type="number" class="quantity-input" value="0" min="0"></td>
                                   <td class="item-total-price">4.99</td>
@@ -69,9 +74,18 @@
                     </table>
                 </div>
             </main>
-            <footer>
-                <!-- Add copyright and contact information here -->
-            </footer>
+            <footer align='center'>
+                <div class="socialMediaLinks">
+                    <p></p>
+                    <i><a href="https://twitter.com/tacobell" class="fa fa-twitter" target="_blank"></a>
+                      <a href="https://www.facebook.com/tacobell" class="fa fa-facebook-f" target="_blank"></a>
+                      <a href="https://www.instagram.com/tacobell" class="fa fa-instagram" target="_blank"></a>
+                      <a href="https://www.linkedin.com/company/taco-bell/" class="fa fa-linkedin" target="_blank">
+                      </a></i>
+                  </div>
+                <p><i><small>Caleb Frost & Sean Carver 2023 &copy; <br>
+                      <a href="mailto:ctfrost@asu.edu" style="color:white;">ctfrost@asu.edu</a></small></i></p>
+              </footer>
         </div>
 
     <script>
