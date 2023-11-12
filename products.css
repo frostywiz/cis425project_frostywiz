@@ -200,3 +200,88 @@ td img {
     color: white;
     text-decoration: none;
 }
+
+#cart-icon-container {
+    position: absolute;
+    top: 220px; /* Adjust the top position as needed */
+    right: 75px; /* Adjust the right position as needed */
+}
+
+footer {
+    background-color: #2f0a55;
+    text-align: center;
+    justify-content: center;
+    color: white;
+    padding-bottom: 5px;
+    margin-bottom: 0;
+}
+
+.socialMediaLinks a {
+    font-size: 20px;
+    margin: 5px 10px 0px 10px;
+    text-decoration: none;
+    background-color: #7f48c3;
+    padding: 10px;
+    width: 20px;
+    text-align: center;
+    border-radius: 25%;
+}
+
+/* contact.html css starts here */
+#body-contact {
+    background-color: #7f48c3;
+    background-image: linear-gradient(to bottom, #9776b9, #2f0a55);
+    background-repeat: no-repeat; 
+}
+
+#map {
+    margin: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.userInfoForm {
+    width: 80%;
+    max-width: 400px;
+    padding: 20px;
+    margin: 10% auto; /* Adjust the vertical margin (10%) as needed */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+
+.userInfoForm label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.userInfoForm input,
+.userInfoForm select,
+.userInfoForm textarea,
+.userInfoForm button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+
+#contact-form {
+    text-align: center;
+}
+
+.userInfoForm button {
+    background-color: #7f48c3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#formDataDisplay,
+#submissionStatus {
+    margin-top: 16px;
+}
