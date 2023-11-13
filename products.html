@@ -25,7 +25,7 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="products.html">Products</a></li>
                         <li><a href="contact.html">Contact</a></li>
-                        <div id="cart-icon-container">
+                        <div class="cart-icon-container">
                             <a href="cart.html"><i class="fa fa-shopping-cart"></i></a>
                         </div>
                     </ul>
@@ -43,7 +43,7 @@
                     <table border="1">
                         <thead>
                             <tr>
-                                <th width="400px">Prodcut Name</th>
+                                <th width="400px">Product Name</th>
                                 <th width="50px">Price</th>
                                 <th width="70px">Quantity</th>
                                 <th width="100px">Item Total Price</th>
@@ -156,7 +156,7 @@
                 // if (!is Number(quantity));
             }
 
-            // FUnction to calcualte the total price ncluding tax
+            // Function to calcualte the total price ncluding tax
             function calculateTotal()
             {
                 totalPrice = 0;
@@ -173,11 +173,11 @@
                     totalPrice += itemTotal
 
                     itemTotalCell.textContent = `$${itemTotal.toFixed(2)}`;
+                });
 
                     const totalWithTax = totalPrice + (totalPrice * taxRate);
-                    totalPriceDisplayed.textContent = `Total Price with 10% tax: $${totalwithTax.toFixed(2)}`;
-                }
-        )}
+                    totalPriceDisplayed.textContent = `Total Price with 10% tax: $${totalWithTax.toFixed(2)}`;
+            }
 
         });
 
