@@ -125,7 +125,7 @@ h2 {
     font-size: 30px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   }
-  
+
 #menu-products li a {
     padding: 2px 2px;
   }
@@ -196,10 +196,11 @@ td img {
 }
 
 .fa-shopping-cart {
-    font-size: 24px;
+    font-size: 30px;
     color: white;
     text-decoration: none;
 }
+
 
 #cart-icon-container {
     position: absolute;
@@ -242,6 +243,17 @@ footer {
     margin-top: 20px;
 }
 
+#order-summary {
+  width: 80%;
+  max-width: 400px;
+  padding: 20px;
+  margin: 10px auto; /* Adjust the vertical margin (10%) as needed */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
 .userInfoForm {
     width: 80%;
     max-width: 400px;
@@ -251,12 +263,6 @@ footer {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
-    color: rgba(255, 251, 7, 0.767);
-    text-shadow: 
-        -1px -1px 0 black,  
-         1px -1px 0 black,
-        -1px  1px 0 black,
-         1px  1px 0 black; 
 }
 
 
@@ -283,7 +289,7 @@ footer {
     background-color: #7f48c3;
     color: rgba(255, 251, 7, 0.767);
     text-shadow: 
-        -1px -1px 0 black,  
+        -1px -1px 0 black,
          1px -1px 0 black,
         -1px  1px 0 black,
          1px  1px 0 black; 
@@ -291,10 +297,21 @@ footer {
     border-radius: 4px;
     cursor: pointer;
 }
-
-#formDataDisplay,
-#submissionStatus {
-    margin-top: 16px;
+.userInfoForm {
+    width: 80%;
+    max-width: 400px;
+    padding: 20px;
+    margin: 10px auto; /* Adjust the vertical margin (10%) as needed */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    color: rgba(255, 251, 7, 0.767);
+    text-shadow: 
+        -1px -1px 0 black,
+         1px -1px 0 black,
+        -1px  1px 0 black,
+         1px  1px 0 black; 
 }
 
 select {
@@ -303,4 +320,11 @@ select {
 
 #message {
     background-color: #7f48c3;
+}
+
+
+
+#formDataDisplay,
+#submissionStatus {
+    margin-top: 16px;
 }
