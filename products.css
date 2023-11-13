@@ -251,6 +251,12 @@ footer {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
+    color: rgba(255, 251, 7, 0.767);
+    text-shadow: 
+        -1px -1px 0 black,  
+         1px -1px 0 black,
+        -1px  1px 0 black,
+         1px  1px 0 black; 
 }
 
 
@@ -275,7 +281,12 @@ footer {
 
 .userInfoForm button {
     background-color: #7f48c3;
-    color: white;
+    color: rgba(255, 251, 7, 0.767);
+    text-shadow: 
+        -1px -1px 0 black,  
+         1px -1px 0 black,
+        -1px  1px 0 black,
+         1px  1px 0 black; 
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -284,4 +295,12 @@ footer {
 #formDataDisplay,
 #submissionStatus {
     margin-top: 16px;
+}
+
+select {
+    background-color: #7f48c3;
+}
+
+#message {
+    background-color: #7f48c3;
 }
