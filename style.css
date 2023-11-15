@@ -140,8 +140,14 @@ nav li a {
     background-repeat: no-repeat; 
 }
 
-p {
+#description p {
     margin-bottom: 5px;
+    color: rgba(255, 251, 7, 0.767);
+    text-shadow: 
+        -1px -1px 0 black,  
+         1px -1px 0 black,
+        -1px  1px 0 black,
+         1px  1px 0 black; 
 }
 
 footer {
