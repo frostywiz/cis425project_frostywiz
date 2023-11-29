@@ -43,6 +43,17 @@ app.post('/customer', (req, res) => {
     );
 });
 
+    app.get('/products', (req, res) => {
+        con.query('SELECT product_Name, product_Price, product_Desc, quantity FROM products;', (error, results) => {
+            if (error) {
+                console.error('Error fetching product data: ', error);
+                res.status(500).json({ error: 'Database error', details: error.message });
+            } else {
+                res.status(200).json(results);
+            }
+        });
+    });
+
 const port = 8200;
 app.listen(port, () => {
     console.log(`The web server is alive! \nListening on http://localhost:${port}`);
