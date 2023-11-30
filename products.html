@@ -1,123 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width-device-width, initial-scale=1.0">
-        <title>Taco Bell: Our Products</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="products.css">
-        <link rel="icon" type="image/png" href="Logo.png">
-    </head>
-    <body id="body-products">
-        <div id="wrapper">
-            <header>
-                <div id="logo">
-                    <img src="Logo.png" width="100" height="100" alt="Logo">
-                </div>
-                <h1>Our Products</h1>
-            </header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taco Bell: Our Products</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="products.css">
+    <link rel="icon" type="image/png" href="Logo.png">
+</head>
+<body id="body-products">
+    <div id="wrapper">
+        <header>
+            <div id="logo">
+                <img src="Logo.png" width="100" height="100" alt="Logo">
+            </div>
+            <h1>Our Products</h1>
+        </header>
 
-            <main>
-                
-                
-                <nav id="nav-products">
-                    <ul id="menu-products">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="products.html">Products</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <div class="cart-icon-container">
-                            <a href="cart.html"><i class="fa fa-shopping-cart"></i></a>
-                        </div>
-                    </ul>
-                </nav>
-                <hr>
-                <br><br>
-                <aside id="side-menu">
-                    <p>Enter a keyword or just click Search Products button to search products.</p>
-                    <input type="text" id="searchInput" placeholder="Enter a keyword">
-                    <button id="searchButton">Search Products</button>
-                    <p id="totalPriceDisplayed"></p>
-                    <button id="addToCartButton">Add to Cart</button>
-                </aside>
-                <div id="products-table-container">
-                    <table border="1">
-                        <thead>
-                            <tr>
-                                <th width="400px">Product Name</th>
-                                <th width="50px">Price</th>
-                                <th width="70px">Quantity</th>
-                                <th width="100px">Item Total Price</th>
-                            </tr>
-                            <tr>
-                                <td><img src="crunchy_taco.png" alt="taco" width="200" height="150">
-                                    Hard Taco</td>
-                                <td class="price">1.79</td>
-                                <td><input type="number" class="quantity-input" value="0" min="0"></td>
-                                <td class="item-total-price">1.79</td>
-                            </tr>
-                            <tr>
-                                <td><img src="bean_burrito.png" alt="burrito" width="200" height="150">Bean Burrito</td>
-                                <td class="price">1.79</td>
-                                <td><input type="number" class="quantity-input" value="0" min="0"></td>
-                                <td class="item-total-price">1.79</td>
-                              </tr>
-                              <tr>
-                                  <td><img src="quesadilla.png" alt="chick_quesadilla" width="200" height="150">Chicken Quesadilla</td>
-                                  <td class="price">4.99</td>
-                                  <td><input type="number" class="quantity-input" value="0" min="0"></td>
-                                  <td class="item-total-price">4.99</td>
-                              </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Product data will be inserted here -->
-                        </tbody>
-                    </table>
-                </div>
-            </main>
-            <footer align='center'>
-                <div class="socialMediaLinks">
-                    <p></p>
-                    <i><a href="https://twitter.com/tacobell" class="fa fa-twitter" target="_blank"></a>
-                      <a href="https://www.facebook.com/tacobell" class="fa fa-facebook-f" target="_blank"></a>
-                      <a href="https://www.instagram.com/tacobell" class="fa fa-instagram" target="_blank"></a>
-                      <a href="https://www.linkedin.com/company/taco-bell/" class="fa fa-linkedin" target="_blank">
-                      </a></i>
-                  </div>
-                <p><i><small>Caleb Frost & Sean Carver 2023 &copy; <br>
-                      <a href="mailto:ctfrost@asu.edu" style="color:white;">ctfrost@asu.edu</a></small></i></p>
-              </footer>
-        </div>
+        <main>
+            <nav id="nav-products">
+                <ul id="menu-products">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <div class="cart-icon-container">
+                        <a href="cart.html"><i class="fa fa-shopping-cart"></i></a>
+                    </div>
+                </ul>
+            </nav>
+            <hr>
+            <br><br>
+            <aside id="side-menu">
+                <p>Enter a keyword or just click Search Products button to search products.</p>
+                <input type="text" id="searchInput" placeholder="Enter a keyword">
+                <button id="searchButton">Search Products</button>
+                <p id="totalPriceDisplay"></p>
+                <button id="addToCartButton">Add to Cart</button>
+            </aside>
+            <div id="products-table-container">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th width="200px">Product Name</th>
+                            <th width="50px">Price</th>
+                            <th width="70px">Quantity</th>
+                            <th width="100px">Item Total Price</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productTableBody">
+                        <!-- Product data will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        <footer align='center'>
+            <div class="socialMediaLinks">
+                <p></p>
+                <i>
+                    <a href="https://twitter.com/tacobell" class="fa fa-twitter" target="_blank"></a>
+                    <a href="https://www.facebook.com/tacobell" class="fa fa-facebook-f" target="_blank"></a>
+                    <a href="https://www.instagram.com/tacobell" class="fa fa-instagram" target="_blank"></a>
+                    <a href="https://www.linkedin.com/company/taco-bell/" class="fa fa-linkedin" target="_blank">
+                    </a>
+                </i>
+            </div>
+            <p><i><small>Caleb Frost & Sean Carver 2023 &copy; <br>
+                <a href="mailto:ctfrost@asu.edu" style="color:white;">ctfrost@asu.edu</a></small></i></p>
+            </footer>
+    </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const searchButton = document.querySelector('#searchButton');
             const searchInput = document.querySelector('#searchInput');
-            const productsTable = document.querySelector('#products-table-container table tbody');
+            const productsTableBody = document.querySelector('#products-table-container table tbody');
             const totalPriceDisplayed = document.createElement('p');
             const taxRate = 0.10;
 
-            let totalPrice = 0;
-
-            // Fetch and display all prodcuts when the page is first loaded
+            // Fetch and display all products when the page is first loaded
             fetchProducts();
 
             // Function to fetch and display products based on the search query
-            function fetchProducts()
-            {
+            function fetchProducts() {
                 fetch('/products')
                     .then(response => response.json())
                     .then(data => {
-                        productsTable.innerHTML = ''; //Clear existing table rows
+                        productsTableBody.innerHTML = ''; // Clear existing table rows
 
                         data.forEach(product => {
-                            const row = productsTable.insertRow();
+                            const row = productsTableBody.insertRow();
                             const nameCell = row.insertCell(0);
                             const priceCell = row.insertCell(1);
                             const quantityCell = row.insertCell(2);
                             const itemPriceCell = row.insertCell(3);
 
-                            nameCell.textContent = product.prod_name;
-                            priceCell.textContent = `$${product.prod_price.toFixed(2)}`;
+                            nameCell.textContent = product.product_Name;
+                            priceCell.textContent = `$${product.product_Price.toFixed(2)}`;
+
 
                             // Create an input element for quantity
                             const quantityInput = document.createElement('input');
@@ -132,7 +111,6 @@
 
                             // Calculate the initial subtotal
                             calculateSubtotal(product, quantityInput, priceCell, itemPriceCell);
-
                         });
                     })
                     .catch(error => {
@@ -140,28 +118,26 @@
                     });
             }
 
-            // 10/31/23
-            // Function to calculate teh subtotal and item total for a product
-            function calculateSubtotal(product, quantityInput, priceCell, itemPriceCell)
-            {
-                const quantity = parseInt(quantityInput.value,10);
-                const price = product.prod_price;
-                
+            // Function to calculate the subtotal and item total for a product
+            function calculateSubtotal(product, quantityInput, priceCell, itemPriceCell) {
+                const quantity = parseInt(quantityInput.value, 10);
+                const price = product.product_Price; // Use the correct column name
+
                 // Calculate the subtotal
                 const subtotal = quantity * price;
+
+                // Set cell values in the table
                 priceCell.textContent = `$${price.toFixed(2)}`;
                 itemPriceCell.textContent = `$${subtotal.toFixed(2)}`;
-                
-                // Check of quantity is not 0
-                // if (!is Number(quantity));
+
+                calculateTotal();
             }
 
-            // Function to calcualte the total price ncluding tax
-            function calculateTotal()
-            {
+            // Function to calculate the total price including tax
+            function calculateTotal() {
                 totalPrice = 0;
-                const totalCells = document.querySelectorAll('#products-table-container table tboy tr td:nth-child(4)'); //This will get 4th column's value
-                const priceCells = document.querySelectorAll('#products-table-container table tbody tr td:nth-child(2)'); //2nd column's value
+                const itemTotalCells = document.querySelectorAll('#products-table-container tr td:nth-child(4)');
+                const priceCells = document.querySelectorAll('#products-table-container tr td:nth-child(2)');
 
                 priceCells.forEach((priceCell, index) => {
                     const price = parseFloat(priceCell.textContent.replace('$', ''));
@@ -170,21 +146,19 @@
                     const itemTotalCell = itemTotalCells[index];
                     const itemTotal = quantity * price;
 
-                    totalPrice += itemTotal
+                    totalPrice += itemTotal;
 
                     itemTotalCell.textContent = `$${itemTotal.toFixed(2)}`;
                 });
 
-                    const totalWithTax = totalPrice + (totalPrice * taxRate);
-                    totalPriceDisplayed.textContent = `Total Price with 10% tax: $${totalWithTax.toFixed(2)}`;
+                const totalWithTax = totalPrice + (totalPrice * taxRate);
+                totalPriceDisplayed.textContent = `Total Price with 10% tax: $${totalWithTax.toFixed(2)}`;
             }
-
-        });
 
         // Event listener for Add to Cart button
         const addToCartButton = document.querySelector('#addToCartButton');
         addToCartButton.addEventListener('click', () => {
-            //Get the selected items
+            // Get the selected items
             const selectItems = getSelectedItems();
 
             // Store the selected items in local storage
@@ -194,22 +168,21 @@
             window.location.href = 'cart.html';
         });
 
-        // Perform search when teh "Search Products" button is clicked
-        searchInput.addEventListener('click', () => {
+        // Perform search when the "Search Products" button is clicked
+        searchButton.addEventListener('click', () => {
             performSearch();
         });
 
-        // Perform serach when Enter Key is pressed in the search input
+        // Perform search when Enter Key is pressed in the search input
         searchInput.addEventListener('keyup', (event) => {
             if (event.key == 'Enter') {
-                performSearch()
+                performSearch();
             }
         });
 
         // Event listener to recalculate prices when quantity changes
-        productsTable.addEventListener('input', (event) => {
-            if (event.target && event.target.type === 'number')
-            {
+        productTableBody.addEventListener('input', (event) => {
+            if (event.target && event.target.type === 'number') {
                 calculateSubtotalForChangedInput(event.target);
             }
         });
@@ -222,83 +195,76 @@
             const productPrice = parseFloat(priceCell.textContent.replace('$', ''));
             const quantity = parseInt(quantityInput.value, 10);
 
-            calculateSubtotal({prod_price: productPrice}, quantityInput, priceCell, itemPriceCell);
-
+            calculateSubtotal({ product_Price: productPrice }, quantityInput, priceCell, itemPriceCell);
         }
 
         // Function to fetch and display products based on search query
-        function performSearch()
-        {
+        function performSearch() {
             const searchQuery = searchInput.value.trim();
             if (searchQuery === '') {
                 fetchProducts();
-            }
-            else {
-                // Fetch products based on teh search words
-                fetch('/products?searchQuery=$(encondeURIComponent(searchQuery))')
-                .then(response => response.json())
-                .then(data => {
-                    productsTable.innerHTML = ''; // Clear the existing 
+            } else {
+                // Fetch products based on the search words
+                fetch(`/products?searchQuery=${encodeURIComponent(searchQuery)}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        productsTableBody.innerHTML = ''; // Clear the existing table rows
 
-                    data.forEach(product => {
-                        const row = productsTable.insertRow();
-                        const nameCell = row.insertCell(0);
-                        const priceCell = row.insertCell(1);
-                        const quantityCell = row.insertCell(2);
-                        const itemPriceCell = row.insertCell(3);
+                        data.forEach(product => {
+                            const row = productsTableBody.insertRow();
+                            const nameCell = row.insertCell(0);
+                            const priceCell = row.insertCell(1);
+                            const quantityCell = row.insertCell(2);
+                            const itemPriceCell = row.insertCell(3);
 
-                        nameCell.textContent = product.prod_name;
-                        priceCell.textContent = `$${product.prod_price.toFixed(2)}`;
+                            nameCell.textContent = product.product_name; // Use the correct column name
+                            priceCell.textContent = `$${product.product_Price.toFixed(2)}`; // Use the correct column name
 
-                        // Create an input element for quantity
-                        const quantityInput = document.createElement('input');
-                        quantityInput.type = 'number';
-                        quantityInput.min = 0;
-                        quantityInput.max = 20;
-                        quantityInput.value = 1;
-                        quantityInput.style.width = '50px';
-                        quantityInput.id = 'quantity';
-                        quantityInput.name = 'quantity';
-                        quantityCell.appendChild(quantityInput);
+                            // Create an input element for quantity
+                            const quantityInput = document.createElement('input');
+                            quantityInput.type = 'number';
+                            quantityInput.min = 0;
+                            quantityInput.max = 20;
+                            quantityInput.value = 1;
+                            quantityInput.style.width = '50px';
+                            quantityInput.id = 'quantity';
+                            quantityInput.name = 'quantity';
+                            quantityCell.appendChild(quantityInput);
 
-                        // Calculate the initial subtotal
-                        calculateSubtotal(product, quantityInput, priceCell, itemPriceCell);
-
+                            // Calculate the initial subtotal
+                            calculateSubtotal(product, quantityInput, priceCell, itemPriceCell);
                         });
-
                     })
                     .catch(error => {
                         console.error('Error fetching product data: ', error);
-                    })
-                }
-            };
-
-            // Function to get selected items from the product table
-            function getSelectedItems() 
-            {
-                const rows = document.querySelectorAll('#products-table-container table tbody tr');
-                const selectedItems = [];
-
-                rows.forEach(row => {
-                    const quantityInput = row.querySelector('input[type="number"]');
-                    const productName = row.querySelector('td:nth-child(1)').textContent;
-                    const productPrice = parseFloat(row.querySelector('td:nth-child(2)').textContent.replace('$', ''));
-                    const quantity = parseInt(quantityInput.value, 10);
-
-                    if (quantity > 0)
-                    {
-                        selectedItems.push({
-                            name: productName,
-                            price: productPrice,
-                            quantity: quantity,
-                        });
-                    }
-                });
-
-                return selectedItems
+                    });
             }
+        }
 
-        
+        // Function to get selected items from the product table
+        function getSelectedItems() {
+            const rows = document.querySelectorAll('#productTableBody tr');
+            const selectedItems = [];
+
+            rows.forEach(row => {
+                const quantityInput = row.querySelector('input[type="number"]');
+                const productName = row.querySelector('td:nth-child(1)').textContent;
+                const productPrice = parseFloat(row.querySelector('td:nth-child(2)').textContent.replace('$', ''));
+                const quantity = parseInt(quantityInput.value, 10);
+
+                if (quantity > 0) {
+                    selectedItems.push({
+                        name: productName,
+                        price: productPrice,
+                        quantity: quantity,
+                    });
+                }
+            });
+
+            return selectedItems;
+        }
+
+    });
     </script>
-    </body>
+</body>
 </html>
