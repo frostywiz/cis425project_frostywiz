@@ -19,15 +19,6 @@ body {
     padding: 0;
 }
 
-#logo {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 1;
-    margin-left: 10px;
-    margin-top: 40px;
-} 
-
 header {
     background-image: url(Background\ image.jpg);
     background-size: cover;
@@ -184,9 +175,22 @@ td img {
     float: right;
 }
 
+#side-menu p {
+    color: rgba(255, 251, 7, 0.767);
+    text-shadow: 
+        -1px -1px 0 black,
+         1px -1px 0 black,
+        -1px  1px 0 black,
+         1px  1px 0 black; 
+}
+
 #side-menu input {
     color: black;
-    text-decoration-color: black;
+    text-shadow: 
+        -1px -1px 0 black,
+         1px -1px 0 black,
+        -1px  1px 0 black,
+         1px  1px 0 black; 
 }
 
 #side-menu button {
@@ -205,7 +209,7 @@ td img {
 /* 11/9/23 in class shopping cart css */
 .cart-icon-container {
     float: right;
-    margin-right: 0 px;
+    margin-right: 0px;
     position: absolute;
     top: 215px; /* Adjust the top position as needed */
     right: 75px; /* Adjust the right position as needed */
@@ -348,4 +352,97 @@ select {
 #formDataDisplay,
 #submissionStatus {
     margin-top: 16px;
+}
+
+#cart-table-container {
+    margin-left: 30px;
+    margin-bottom: 15px;
+    color: rgba(255, 251, 7, 0.767);
+    text-shadow: 
+        -1px -1px 0 black,  
+         1px -1px 0 black,
+        -1px  1px 0 black,
+         1px  1px 0 black; 
+         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#product-descriptions {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-gap: 20px;
+    justify-content: center;
+}
+
+#product-descriptions img {
+    width: 400px;
+    height: 400px;
+    border: 5px solid black;
+    border-radius: 10px;
+}
+
+.product-description {
+    text-align: center;
+    margin-top: 10px;
+    color: rgba(255, 251, 7, 0.767);
+    text-shadow: 
+        -1px -1px 0 black,  
+         1px -1px 0 black,
+        -1px  1px 0 black,
+         1px  1px 0 black; 
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+/* This makes the labels for each photo bigger than their descriptions */
+.product-description p u {
+    font-size: 36px;
+}
+
+/* This makes the paragraphs for the descriptions of the products smaller */
+.product-description p {
+    font-size: 14px;
+}
+
+#products-table-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#Order h2 {
+    text-align: center;
+    align-items: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-shadow: 
+        -1px -1px 0 white,  
+         1px -1px 0 white,
+        -1px  1px 0 white,
+         1px  1px 0 white;
+}
+
+#addToCartButtonBottom {
+    /* Font editing etc. */
+    background-color: #7f48c3;
+    color: black;
+    text-shadow: 
+        -1px -1px 0 white,  
+         1px -1px 0 white,
+        -1px  1px 0 white,
+         1px  1px 0 white;
+    font-size: 30px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+    /* border creation and button size adjustment */
+    border-radius: 10px; /* Rounds the edges */
+    border-color: black;
+    padding: 15px 40px; /* Adjust padding for a larger button */
+    margin: 10px auto; /* Center the button horizontally with auto margins */
+    cursor: pointer;
+
+    /* Button formatting to make it look neater */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; /* Center the text within the button */
 }
