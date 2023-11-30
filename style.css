@@ -58,7 +58,7 @@ h2 {
          1px  1px 0 white; 
 }
 
-#description p {
+#description p, ol {
     text-align: left;
     margin-left: 50px;
     margin-top: 5px;
