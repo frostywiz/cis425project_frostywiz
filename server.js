@@ -43,6 +43,28 @@ app.post('/customer', (req, res) => {
     );
 });
 
+// This is the request for accessing the orders table and then inserting the order data into the table.
+app.post('/orders', (req, res) => {
+    const { first_name, last_name, email, phone, address, payment, totalCostValue, message} = req.body;
+
+    console.log('Request body: ', req.body);
+
+    con.query(
+        'INSERT INTO orders (first_name, last_name, email, phone, address, payment_method, totalCostValue, message) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+        [first_name, last_name, email, phone, address, payment, totalCostValue, message ],
+        (error, results) => {
+            if (error) {
+                console.error('Error inserting data into the database: ', error);
+                res.status(500).json({ error: 'Database error', details: error.message });
+            } else {
+                console.log('Data inserted successfully');
+                res.status(200).json({ success: true });
+            }
+        }
+    );
+});
+
+
     app.get('/products', (req, res) => {
         con.query('SELECT product_Name, product_Price, product_Desc FROM products;', (error, results) => {
             if (error) {
