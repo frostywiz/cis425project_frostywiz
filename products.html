@@ -37,11 +37,51 @@
                 <p id="totalPriceDisplay"></p>
                 <button id="addToCartButton">Add to Cart</button>
             </aside>
+            <div id="product-descriptions">
+                <div class="product-description">
+                    <img src="soft_taco.jpg" alt="soft_taco">
+                    <p><u>Soft Taco</p></u>
+                    <p>A classic soft taco filled with devine taco sauce and savoury beef</p>
+                </div>
+                <div class="product-description">
+                    <img src="bean_burrito.png" alt="bean_burrito">
+                    <p><u>Bean Burrito</p></u>
+                    <p>A delectable bean and cheese burrito with our signature sauce.</p>
+                </div>
+                <div class="product-description">
+                    <img src="quesadilla.png" alt="chicken_quesadilla">
+                    <p><u>Chicken Quesadilla</p></u>
+                    <p>100% real cheddar cheese with savory chicken between two flour tortillas.</p>
+                </div>
+                <div class="product-description">
+                    <img src="crunchy_taco.png" alt="hard_taco">
+                    <p><u>Hard Taco</p></u>
+                    <p>A classic hard shell taco filled with divine beef and signature sauce.</p>
+                </div>
+                <div class="product-description">
+                    <img src="Taco_Image.png" alt="combo_box">
+                    <p><u>Combo Box</p></u>
+                    <p>Includes a Chalupa Supreme, a Beefy 5-Layer Burrito, a Crunchy Taco, Cinnamon Twists, and a medium fountain drink</p>
+                </div>
+                <div class="product-description">
+                    <img src="Cinnabon_delights.png" alt="Cinnabon_delights">
+                    <p><u>Cinnabon Delights<small>&copy;</small></u></p>
+                    <p>Sorry to tell you, buddy, but you’ve been had. Cinnabon Delights® are a thing. 
+                        You thought you were eating breakfast, but then you put this thing 
+                        in your mouth and WOAH, cinnamon spheres filled with icing is obviously dessert, not breakfast.</p>
+                    <p><small><small>Cinnabon®, Cinnabon Delights® and the Cinnabon logo are registered trademarks of Cinnabon, Inc.
+                    </small></small></p>
+                </div>
+            </div>
+            <br>
+            <div id="Order">
+                <h2>Order Products Here</h2>
+            </div>
             <div id="products-table-container">
                 <table border="1">
                     <thead>
                         <tr>
-                            <th width="200px">Product Name</th>
+                            <th width="500px">Product Name</th>
                             <th width="50px">Price</th>
                             <th width="70px">Quantity</th>
                             <th width="100px">Item Total Price</th>
@@ -52,6 +92,10 @@
                     </tbody>
                 </table>
             </div>
+
+            <!-- I added this button for easier accessiblity so they can addd their order. -->
+            <button id="addToCartButtonBottom"><strong>Add to Cart</strong></button>
+
         </main>
         <footer align='center'>
             <div class="socialMediaLinks">
@@ -103,7 +147,7 @@
                             quantityInput.type = 'number';
                             quantityInput.min = 0;
                             quantityInput.max = 20;
-                            quantityInput.value = 1;
+                            quantityInput.value = 0;
                             quantityInput.style.width = '50px';
                             quantityInput.id = 'quantity';
                             quantityInput.name = 'quantity';
@@ -158,6 +202,19 @@
         // Event listener for Add to Cart button
         const addToCartButton = document.querySelector('#addToCartButton');
         addToCartButton.addEventListener('click', () => {
+            // Get the selected items
+            const selectItems = getSelectedItems();
+
+            // Store the selected items in local storage
+            localStorage.setItem('cartItems', JSON.stringify(selectItems));
+
+            // Redirect to cart.html
+            window.location.href = 'cart.html';
+        });
+
+        // Added this second event listener for the button underneath the table
+        const addToCartButtonBottom = document.querySelector('#addToCartButtonBottom');
+        addToCartButtonBottom.addEventListener('click', () => {
             // Get the selected items
             const selectItems = getSelectedItems();
 
@@ -225,7 +282,7 @@
                             quantityInput.type = 'number';
                             quantityInput.min = 0;
                             quantityInput.max = 20;
-                            quantityInput.value = 1;
+                            quantityInput.value = 0;
                             quantityInput.style.width = '50px';
                             quantityInput.id = 'quantity';
                             quantityInput.name = 'quantity';
