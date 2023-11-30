@@ -37,238 +37,302 @@
         <p>Tax (10%): <span id="tax">$0.00</span></p>
         <p>Total Price: <span id="totalCost">$0.00</span></p>
       </aside>
-      </div>
-
-      <div id="cart-table-container">
-        <table border="1">
-            <thead>
-                <tr>
-                    <th width="200px">Product Name</th>
-                    <th width="50px">Price</th>
-                    <th width="70px">Quantity</th>
-                    <th width="70px">Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Cart product data will be inserted here -->
-            </tbody>
-        </table>
     </div>
 
-      <body>
-
-        <h2>Enter your Information</h2>
-        <form class="userInfoForm" id="userInfoForm" method="POST" action="/customer">
-          <label for="firstname">First Name:</label>
-          <input type="text" id="fname" name="fname" required>
-          <label for="lastname">Last Name:</label>
-          <input type="text" id="lname" name="lname" required>
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required>
-          <label for="phone">Phone Number:</label>
-          <input type="tel" id="phone" name="phone" required>
-          <label for="address">Address:</label>
-          <input type="text" id="address" name="address" required>
-          <label for="payment">Payment Method:</label>
-          <select id="payment" name="payment">
-            <option value="Visa">Visa</option>
-            <option value="Check">Check</option>
-            <option value="Debit">Debit</option>
-          </select>
-          <label for="message">Message:</label>
-          <textarea id="message" name="message" rows="4" cols="50"></textarea>
-          <button type="submit">Submit Order</button>
-          <div id="formDataDisplay"></div>
-          <div id="submissionStatus"></div>
-        </form>
-
-      </main>
+    <div id="cart-table-container">
+      <table border="1">
+        <thead>
+          <tr>
+            <th width="200px">Product Name</th>
+            <th width="50px">Price</th>
+            <th width="70px">Quantity</th>
+            <th width="70px">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Cart product data will be inserted here -->
+        </tbody>
+      </table>
     </div>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Retrieve selected items from the local storage
-        const cartItems = JSON.parse(localStorage.getItem('cartItems'));
-        // Reference to the cart table body
-        const cartTableBody = document.querySelector('#cart-table-container table tbody');
-        // Reference to the total cost span
-        const totalCostSpan = document.getElementById('totalCost');
-        const subtotalCostSpan = document.getElementById('subtotalCost');
-        const taxSpan = document.getElementById('tax');
 
-        // Initialize total cost
-        let totalCost = 0;
-        let tax = 0;
-        let subtotalCost = 0;
+    <body>
 
-        // Function to format a number as currency
-        function formatCurrency(value) {
-          return `$${value.toFixed(2)}`;
-        }
+      <h2>Enter your Information</h2>
+      <form class="userInfoForm" id="userInfoForm" method="POST" action="/orders" name="userInfoForm">
+        <label for="firstname">First Name:</label>
+        <input type="text" id="first_name" name="first_name" required>
+        <label for="lastname">Last Name:</label>
+        <input type="text" id="last_name" name="last_name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required>
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required>
+        <label for="payment">Payment Method:</label>
+        <select id="payment" name="payment">
+          <option value="Visa">Visa</option>
+          <option value="Check">Check</option>
+          <option value="Debit">Debit</option>
+        </select>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" cols="50"></textarea>
+        <button type="submit">Submit Order</button>
+        <div id="formDataDisplay"></div>
+        <div id="submissionStatus"></div>
+      </form>
 
-        // Function to handle item deletion when that checkboxes are checked
-        function handleItemDelete() {
-          const checkboxes = document.querySelectorAll('#cart-table-container table tbody input[type="checkbox"]');
-          checkboxes.forEach((checkbox, index) => {
-            checkbox.addEventListener('change', () => {
-              if (checkbox.checked) {
-                // Delete the corresponding row from the table
-                const row = checkbox.closest('tr');
-                row.remove();
-                // Update the total cost when an item is removed
-                subtotalCost -= cartItems[index].price * cartItems[index].quantity;
-                totalCost -= cartItems[index].price * cartItems[index].quantity;
-                const tax = totalCost * 0.1;
-                totalCost += tax;
-                totalCostSpan.textContent = formatCurrency(totalCost);
-                subtotalCostSpan.textContent = formatCurrency(subtotalCost);
-                taxSpan.textContent = formatCurrency(tax)
-              }
-            });
-          });
-        }
+    </main>
+  </div>
 
-        // populate the cart table with selected items
-        if (cartItems && cartItems.length > 0) {
-          cartItems.forEach(item => {
-            const row = cartTableBody.insertRow();
-            const nameCell = row.insertCell(0);
-            const priceCell = row.insertCell(1);
-            const quantityCell = row.insertCell(2);
-            const deleteCell = row.insertCell(3); // Add a cell for the Delete checkbox
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Retrieve selected items from the local storage
+      const cartItems = JSON.parse(localStorage.getItem('cartItems'));
+      // Reference to the cart table body
+      const cartTableBody = document.querySelector('#cart-table-container table tbody');
+      // Reference to the total cost span
+      const totalCostSpan = document.getElementById('totalCost');
+      const subtotalCostSpan = document.getElementById('subtotalCost');
+      const taxSpan = document.getElementById('tax');
 
-            nameCell.textContent = item.name;
-            priceCell.textContent = formatCurrency(item.price);
-            quantityCell.textContent = item.quantity;
+      // Initialize total cost
+      let totalCostValue = 0;
+      let tax = 0;
+      let subtotalCostValue = 0;
 
-            // Create a checkbox for deletion
-            const deleteCheckbox = document.createElement('input');
-            deleteCheckbox.type = 'checkbox';
-            deleteCheckbox.id = `deleteCheckbox${row.rowIndex}`; // Assing a unique ID
-            deleteCell.appendChild(deleteCheckbox);
+      // Function to format a number as currency
+      function formatCurrency(value) {
+        return `$${value.toFixed(2)}`;
+      }
 
-            // Create a label for the checkbox
-            const deleteLabel = document.createElement('label');
-            deleteLabel.setAttribute('for', `deleteCheckbox${row.rowIndex}`); // Associate with the checkbox
-            deleteLabel.textContent = 'Yes';
-            deleteCell.appendChild(deleteLabel);
-
-            // Update the total cost
-            subtotalCost += item.price * item.quantity;
-            totalCost += item.price * item.quantity
-          });
-
-          // Add 10% tax to the total cost
-          const tax = totalCost * 0.1;
-          totalCost += tax;
-
-          console.log(totalCost)
-
-          // Update the total cost display
-          totalCostSpan.textContent = formatCurrency(totalCost);
-          subtotalCostSpan.textContent = formatCurrency(subtotalCost);
-          taxSpan.textContent = formatCurrency(tax);
-
-        }
-
-        // call the function to set up item deletion
-        handleItemDelete();
-
-      });
-
-      // Add event listener to the user-info-form for submission and order processing
-      const userInfoForm = document.querySelector('.userInfoForm');
-      const submissionStatus = document.getElementById('submissionStatus');
-
-      userInfoForm.addEventListener('submit', async (event) => {
-        event.preventDefault();
-
-        // collect form data
-        const formData = new FormData(userInfoForm);
-        console.log(formData);
-
-        // Retrieve the selected payment option
-        const paymentSelect = userInfoForm.querySelector('#payment');
-        const selectedPayment = paymentSelect.options[paymentSelect.selectedIndex].value;
-
-        // Get today's date in 'yyyy-mm-dd' format
-        const today = new Date();
-        const orderDate = today.toISOString().split('T')[0];
-
-        // Create an object to hold the customer infomration, order details, and items ordered
-        const orderData = {
-          customer: {
-            firstname: formData.get('firstname'),
-            lastname: formData.get('lastname'),
-            email: formData.get('email'),
-            phone: formData.get('phone'),
-            address: formData.get('address'),
-          },
-          orders: [
-            {
-              orderDate, // Set OrderDate to today's date
-              payment: formData.get('payment'),
-              message: formData.get('message'),
-              totalCost: formatCurrency(totalCost),
-              orderItems: [] // Initialize orderItems as an empty array
+      // Function to handle item deletion when checkboxes are checked
+      function handleItemDelete() {
+        const checkboxes = document.querySelectorAll('#cart-table-container table tbody input[type="checkbox"]');
+        checkboxes.forEach((checkbox, index) => {
+          checkbox.addEventListener('change', () => {
+            if (checkbox.checked) {
+              // Delete the corresponding row from the table
+              const row = checkbox.closest('tr');
+              row.remove();
+              // Update the total cost when an item is removed
+              subtotalCostValue -= cartItems[index].price * cartItems[index].quantity;
+              totalCostValue -= cartItems[index].price * cartItems[index].quantity;
+              const tax = subtotalCostValue * 0.1;
+              totalCostValue = subtotalCostValue + tax;
+              totalCostSpan.textContent = formatCurrency(totalCostValue);
+              subtotalCostSpan.textContent = formatCurrency(subtotalCostValue);
+              taxSpan.textContent = formatCurrency(tax)
             }
-          ]
-        };
-
-        // Populate orderItems with teh selected items
-        if (cartItems && cartItems.length > 0) {
-          cartItems.forEach(item => {
-            orderData.orders[0].orderItems.push({
-              name: item.name,
-              price: item.price,
-              quantity: item.quantity,
-
-            });
-
           });
-        }
+        });
+      }
 
-        // Update the "payment" property in orderData
-        orderData.customer.payment = selectedPayment;
+      // populate the cart table with selected items
+      if (cartItems && cartItems.length > 0) {
+        cartItems.forEach(item => {
+          const row = cartTableBody.insertRow();
+          const nameCell = row.insertCell(0);
+          const priceCell = row.insertCell(1);
+          const quantityCell = row.insertCell(2);
+          const deleteCell = row.insertCell(3); // Add a cell for the Delete checkbox
 
-        console.log("orderData is ", orderData);
+          nameCell.textContent = item.name;
+          priceCell.textContent = formatCurrency(item.price);
+          quantityCell.textContent = item.quantity;
 
+          // Create a checkbox for deletion
+          const deleteCheckbox = document.createElement('input');
+          deleteCheckbox.type = 'checkbox';
+          deleteCheckbox.id = `deleteCheckbox${row.rowIndex}`; // Assign a unique ID
+          deleteCell.appendChild(deleteCheckbox);
 
-        try {
-          // Send a POST request to the server to handle form submission 
-          const response = await fetch('/customer', {
-            method: 'POST',
-            body: JSON.stringify(orderData),
-            headers: { 'Content-Type': 'application/json' }
-          });
+          // Create a label for the checkbox
+          const deleteLabel = document.createElement('label');
+          deleteLabel.setAttribute('for', `deleteCheckbox${row.rowIndex}`); // Associate with the checkbox
+          deleteLabel.textContent = 'Yes';
+          deleteCell.appendChild(deleteLabel);
 
-          if (response.ok) {
-            userInfoForm.reset();
-            submissionStatus.textContent = "Customer data submitted successfully";
-          }
-          else {
-            submissionStatus.textContent = "Error submitting order. Please try again."
-          }
-        } catch (error) {
-          submissionStatus.textContent = "An error occurred. Please try again later.";
-          console.error('An error occurred while submitting the form: ', error)
-        }
+          // Update the total cost
+          subtotalCostValue += item.price * item.quantity;
+          totalCostValue += item.price * item.quantity
+        });
 
+        // Add 10% tax to the total cost
+        const tax = totalCostValue * 0.1;
+        totalCostValue += tax;
+
+        console.log(totalCostValue)
+
+        // Update the total cost display
+        totalCostSpan.textContent = formatCurrency(totalCostValue);
+        subtotalCostSpan.textContent = formatCurrency(subtotalCostValue);
+        taxSpan.textContent = formatCurrency(tax);
+
+      }
+
+      // call the function to set up item deletion
+      handleItemDelete();
+
+    //});
+
+    // Add event listener to the user-info-form for submission and order processing
+    const userInfoForm = document.querySelector('.userInfoForm');
+    const submissionStatus = document.getElementById('submissionStatus');
+
+    userInfoForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      // Create an array to store orderItems
+      const orderItems = []
+
+      // Iterate through the rows in the cart table and push data to orderItems
+      const cartTableRows = document.querySelectorAll('#cart-table-container table tbody tr');
+      cartTableRows.forEach(row => {
+        const name = row.cells[0].textContent;
+        const price = parseFloat(row.cells[1].textContent.replace('$', ''));
+        const quantity = parseInt(row.cells[2].textContent);
+
+        orderItems.push({
+          name,
+          price,
+          quantity
+        });
       });
 
-    </script>
+      // collect form data
+      const formData = new FormData(userInfoForm);
+      console.log(formData);
 
-    <footer style='text-align: center;'>
-      <div class="socialMediaLinks">
-        <p></p>
-        <i><a href="https://twitter.com/tacobell" class="fa fa-twitter" target="_blank"></a>
-          <a href="https://www.facebook.com/tacobell" class="fa fa-facebook-f" target="_blank"></a>
-          <a href="https://www.instagram.com/tacobell" class="fa fa-instagram" target="_blank"></a>
-          <a href="https://www.linkedin.com/company/taco-bell/" class="fa fa-linkedin" target="_blank">
-          </a></i>
-      </div>
-      <p><i><small>Caleb Frost & Sean Carver 2023 &copy; <br>
-            <a href="mailto:ctfrost@asu.edu" style="color:white;">ctfrost@asu.edu</a></small></i></p>
-    </footer>
-    </body>
+      // Retrieve the selected payment option
+      const paymentSelect = userInfoForm.querySelector('#payment');
+      const selectedPayment = paymentSelect.options[paymentSelect.selectedIndex].value;
+
+      // Get today's date in 'yyyy-mm-dd' format
+      const today = new Date();
+      const orderDate = today.toISOString().split('T')[0];
+
+      // Create an object to hold the customer information, order details, and items ordered
+      // const orderData = {
+      //   customer: {
+      //     first_name: formData.get('first_name'),
+      //     last_name: formData.get('last_name'),
+      //     email: formData.get('email'),
+      //     phone: formData.get('phone'),
+      //     address: formData.get('address'),
+      //   },
+      //   orders: [
+      //     {
+      //       orderDate, // Set OrderDate to today's date
+      //       payment: formData.get('payment'),
+      //       message: formData.get('message'),
+      //       totalCost: `$${totalCostValue.toFixed(2)}`,
+      //       orderItems: [] // Initialize orderItems as an empty array
+      //     }
+      //   ]
+      // };
+
+      // Added this already in line 201
+
+      // Populate orderItems with the selected items
+      // if (cartItems && cartItems.length > 0) {
+      //   cartItems.forEach(item => {
+      //     orderData.orders[0].orderItems.push({
+      //       name: item.name,
+      //       price: item.price,
+      //       quantity: item.quantity,
+
+      //     });
+
+      //   });
+      // }
+
+      // Update the "payment" property in orderData
+      // orderData.customer.payment = selectedPayment;
+
+      // console.log("orderData is ", orderData);
+
+    const orderFormName = document.getElementById("userInfoForm");
+    const first_name_input = document.getElementById("first_name");
+    const last_name_input = document.getElementById("last_name");
+    const emailInput = document.getElementById("email");
+    const phoneInput = document.getElementById("phone");
+    const addressInput = document.getElementById("address");
+    const paymentInput = document.getElementById("payment");
+    const messageInput = document.getElementById("message");
+
+    const first_name = first_name_input.value;
+    const last_name = last_name_input.value;
+    const email = emailInput.value;
+    const phone = phoneInput.value;
+    const address = addressInput.value;
+    const payment = paymentInput.value;
+    const message = messageInput.value;
+
+    try {
+        // Send a POST request to the server to handle form submission 
+        fetch('/orders', {
+            method: 'POST',
+            body: JSON.stringify({
+                first_name,
+                last_name,
+                email,
+                phone,
+                address,
+                payment,
+                totalCostValue,
+                message
+            }),
+            headers: { 'Content-Type': 'application/json' }
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    message.textContent = "Order submitted successfully!";
+                } else {
+                    message.textContent = "Error submitting order. Please try again.";
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                message.textContent = "An error occurred. Please try your order again later.";
+            });
+    } catch (error) {
+        console.error('An error occurred while submitting the form: ', error);
+        message.textContent = "An error occurred. Please try again later.";
+    }
+
+
+    
+
+      //   if (response.ok) {
+      //     userInfoForm.reset();
+      //     submissionStatus.textContent = "Customer data submitted successfully";
+      //   } else {
+      //     submissionStatus.textContent = "Error submitting order. Please try again."
+      //   }
+      // } catch (error) {
+      //   submissionStatus.textContent = "An error occurred. Please try again later.";
+      //   console.error('An error occurred while submitting the form: ', error)
+      // }
+
+    });
+  });
+
+  </script>
+
+  <footer style='text-align: center;'>
+    <div class="socialMediaLinks">
+      <p></p>
+      <i><a href="https://twitter.com/tacobell" class="fa fa-twitter" target="_blank"></a>
+        <a href="https://www.facebook.com/tacobell" class="fa fa-facebook-f" target="_blank"></a>
+        <a href="https://www.instagram.com/tacobell" class="fa fa-instagram" target="_blank"></a>
+        <a href="https://www.linkedin.com/company/taco-bell/" class="fa fa-linkedin" target="_blank">
+        </a></i>
+    </div>
+    <p><i><small>Caleb Frost & Sean Carver 2023 &copy; <br>
+          <a href="mailto:ctfrost@asu.edu" style="color:white;">ctfrost@asu.edu</a></small></i></p>
+  </footer>
+  </body>
 
 </html>
