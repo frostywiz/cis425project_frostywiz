@@ -194,9 +194,7 @@
         const quantity = parseInt(row.cells[2].textContent);
 
         orderItems.push({
-          name,
-          price,
-          quantity
+          name, price, quantity
         });
       });
 
@@ -212,77 +210,55 @@
       const today = new Date();
       const orderDate = today.toISOString().split('T')[0];
 
-      // Create an object to hold the customer information, order details, and items ordered
-      // const orderData = {
-      //   customer: {
-      //     first_name: formData.get('first_name'),
-      //     last_name: formData.get('last_name'),
-      //     email: formData.get('email'),
-      //     phone: formData.get('phone'),
-      //     address: formData.get('address'),
-      //   },
-      //   orders: [
-      //     {
-      //       orderDate, // Set OrderDate to today's date
-      //       payment: formData.get('payment'),
-      //       message: formData.get('message'),
-      //       totalCost: `$${totalCostValue.toFixed(2)}`,
-      //       orderItems: [] // Initialize orderItems as an empty array
-      //     }
-      //   ]
-      // };
+      console.log(typeof totalCostValue, totalCostValue);
 
-      // Added this already in line 201
+      //Create an object to hold the customer information, order details, and items.
+      const orderData = {
+        customer: {
+          first_name: formData.get('first_name'),
+          last_name: formData.get('last_name'),
+          email: formData.get('email'),
+          address: formData.get('address')
+        },
+        orders: [
+          {
+            orderDate, // Set orderDate to today's date above in previoius code
+            payment: formData.get('payment'),
+            message: formData.get('message'),
+            totalCostValue: totalCostValue.toFixed(2),
+            orderItems
+          }
+        ]
+      }
 
-      // Populate orderItems with the selected items
-      // if (cartItems && cartItems.length > 0) {
-      //   cartItems.forEach(item => {
-      //     orderData.orders[0].orderItems.push({
-      //       name: item.name,
-      //       price: item.price,
-      //       quantity: item.quantity,
 
-      //     });
+    /* 
+    This was the old code I had used to connect directly to the
+    MySQL database to store the data in there.
+    */
+    // const orderFormName = document.getElementById("userInfoForm");
+    // const first_name_input = document.getElementById("first_name");
+    // const last_name_input = document.getElementById("last_name");
+    // const emailInput = document.getElementById("email");
+    // const phoneInput = document.getElementById("phone");
+    // const addressInput = document.getElementById("address");
+    // const paymentInput = document.getElementById("payment");
+    // const messageInput = document.getElementById("message");
 
-      //   });
-      // }
-
-      // Update the "payment" property in orderData
-      // orderData.customer.payment = selectedPayment;
-
-      // console.log("orderData is ", orderData);
-
-    const orderFormName = document.getElementById("userInfoForm");
-    const first_name_input = document.getElementById("first_name");
-    const last_name_input = document.getElementById("last_name");
-    const emailInput = document.getElementById("email");
-    const phoneInput = document.getElementById("phone");
-    const addressInput = document.getElementById("address");
-    const paymentInput = document.getElementById("payment");
-    const messageInput = document.getElementById("message");
-
-    const first_name = first_name_input.value;
-    const last_name = last_name_input.value;
-    const email = emailInput.value;
-    const phone = phoneInput.value;
-    const address = addressInput.value;
-    const payment = paymentInput.value;
-    const message = messageInput.value;
+    // const first_name = first_name_input.value;
+    // const last_name = last_name_input.value;
+    // const email = emailInput.value;
+    // const phone = phoneInput.value;
+    // const address = addressInput.value;
+    // const payment = paymentInput.value;
+    // const message = messageInput.value;
+    // totalCostValue = subtotalCostValue + tax;
 
     try {
         // Send a POST request to the server to handle form submission 
-        fetch('/orders', {
+        const respone = await fetch('/orders', {
             method: 'POST',
-            body: JSON.stringify({
-                first_name,
-                last_name,
-                email,
-                phone,
-                address,
-                payment,
-                totalCostValue,
-                message
-            }),
+            body: JSON.stringify(orderData),
             headers: { 'Content-Type': 'application/json' }
         })
             .then(response => response.json())
